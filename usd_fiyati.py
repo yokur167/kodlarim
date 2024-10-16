@@ -34,8 +34,10 @@ data = {
 # JSON dosyasını proje dizinine kaydet
 file_path = os.path.join(os.getcwd(), 'usd_fiyati.json')
 
-# Veriyi JSON dosyasına kaydediyoruz
-with open(file_path, 'w') as json_file:
-    json.dump(data, json_file)
-
-print(f"USD fiyatı JSON dosyasına {file_path} olarak kaydedildi.")
+# Veriyi JSON dosyasına kaydetme işlemi (try-except bloğuyla)
+try:
+    with open(file_path, 'w') as json_file:
+        json.dump(data, json_file)
+    print(f"USD fiyatı JSON dosyasına {file_path} olarak kaydedildi.")
+except Exception as e:
+    print(f"Dosya oluşturulurken bir hata oluştu: {e}")
