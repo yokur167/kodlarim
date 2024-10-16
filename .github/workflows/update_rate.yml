@@ -1,35 +1,56 @@
-name: Update USD Rate
+name: Update Rates
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Her 5 dakikada bir çalışacak
+    - cron: "*/15 * * * *"  # Her 15 dakikada bir çalışacak
 
 jobs:
-  update-rate:
+  update-rates:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4
-      
-      - name: Run the script
-        run: |
-          python usd_fiyati.py
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
 
-      - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add usd_fiyati.json
-          git commit -m "Update USD rate"
-          git push origin main
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Run usd_fiyati.py
+      run: python usd_fiyati.py
+
+    - name: Run eur_fiyati.py
+      run: python eur_fiyati.py
+
+    - name: Run eur_usd_paritesii.py
+      run: python eur_usd_paritesii.py
+
+    - name: Run dxy_fiyati.py
+      run: python dxy_fiyati.py
+
+    - name: Run gold_price.py
+      run: python gold_price.py
+
+    - name: Run bilezik_fiyati.py
+      run: python bilezik_fiyati.py
+
+    - name: Run ceyrek_altin_price.py
+      run: python ceyrek_altin_price.py
+
+    - name: Run ons_altin_fiyati.py
+      run: python ons_altin_fiyati.py
+
+    - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add *.json
+        git commit -m "Update all rates"
+        git push origin main
