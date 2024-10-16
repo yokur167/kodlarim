@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 
 # Bigpara sayfasından USD fiyatını çekeceğimiz URL
 url = 'https://bigpara.hurriyet.com.tr/doviz/dolar/'
@@ -30,8 +31,11 @@ data = {
     "USD": formatted_usd_price
 }
 
+# JSON dosyasını proje dizinine kaydet
+file_path = os.path.join(os.getcwd(), 'usd_fiyati.json')
+
 # Veriyi JSON dosyasına kaydediyoruz
-with open('usd_fiyati.json', 'w') as json_file:
+with open(file_path, 'w') as json_file:
     json.dump(data, json_file)
 
-print("USD fiyatı JSON dosyasına kaydedildi.")
+print(f"USD fiyatı JSON dosyasına {file_path} olarak kaydedildi.")
