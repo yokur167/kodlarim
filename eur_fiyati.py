@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 
 # Bigpara sayfasından Euro fiyatını çekeceğimiz URL
 url = 'https://bigpara.hurriyet.com.tr/doviz/euro/'
@@ -30,9 +31,13 @@ data = {
     "EUR": formatted_eur_price
 }
 
-# Veriyi JSON dosyasına kaydediyoruz
-with open('eur_fiyati.json', 'w') as json_file:
-    json.dump(data, json_file)
+# JSON dosyasını proje dizinine kaydet
+file_path = os.path.join(os.getcwd(), 'eur_fiyati.json')
 
-print("Euro fiyatı JSON dosyasına kaydedildi.")
-
+# Veriyi JSON dosyasına kaydetme işlemi (try-except bloğuyla)
+try:
+    with open(file_path, 'w') as json_file:
+        json.dump(data, json_file)
+    print(f"Euro fiyatı JSON dosyasına ({file_path}) olarak kaydedildi.")
+except Exception as e:
+    print(f"Dosya oluşturulurken bir hata oluştu: {e}")
