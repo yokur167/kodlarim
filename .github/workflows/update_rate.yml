@@ -2,7 +2,7 @@ name: Update USD Rate
 
 on:
   schedule:
-    - cron: "*/1 * * * *"  # Her 1 dakikada bir çalışacak
+    - cron: "*/5 * * * *"  # Her 5 dakikada bir çalışacak
 
 jobs:
   update-rate:
@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -19,11 +19,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
-      
+
+      - name: Print current directory
+        run: pwd  # Bu adım, o anki çalışma dizinini gösterecek
+
       - name: Run the script
         run: |
           python usd_fiyati.py
-      
+
       - name: Commit and push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
