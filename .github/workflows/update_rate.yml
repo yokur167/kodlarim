@@ -2,7 +2,7 @@ name: Update USD Rate
 
 on:
   schedule:
-    - cron: "*/1 * * * *"  # Her 1 dakikada bir çalışacak
+    - cron: "*/2 * * * *"  # Her 2 dakikada bir çalışacak
 
 jobs:
   update-rate:
@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+      
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -19,9 +19,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
-
+      
       - name: Print current directory
-        run: pwd  # Bu adım, o anki çalışma dizinini gösterecek
+        run: pwd  # Çalışma dizinini göreceğiz
 
       - name: Run the script
         run: |
