@@ -2,7 +2,7 @@ name: Update Rates
 
 on:
   schedule:
-    - cron: "*/15 8-18 * * 1-5"  # Pazartesi'den Cuma'ya her 15 dakikada bir 08:00 - 18:30 arasında çalışacak
+    - cron: "*/15 5-16 * * 1-5"  # Pazartesi'den Cuma'ya her 15 dakikada bir 08:00 - 18:30 arasında çalışacak
     
 jobs:
   update-rates:
