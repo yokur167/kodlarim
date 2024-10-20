@@ -46,11 +46,12 @@ jobs:
       run: python cumhuriyet_altin_price.py
 
     - name: Commit and push changes if there are any
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git diff --quiet || git add *.json
-        git diff --quiet || git commit -m "Update all rates"
-        git push origin main
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: |
+    git config --global user.name "GitHub Actions"
+    git config --global user.email "actions@github.com"
+    git add *.json
+    git commit -m "Update all rates" || echo "No changes to commit"
+    git push origin main || echo "Nothing to push"
+
