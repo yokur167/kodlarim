@@ -2,7 +2,7 @@ name: Update Rates
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # Her 15 dakikada bir çalışacak
+    - cron: "*/15 * * 1-5 *"  # Pazartesi'den Cuma'ya her 15 dakikada bir çalışacak
 
 jobs:
   update-rates:
