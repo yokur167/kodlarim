@@ -27,8 +27,8 @@ jobs:
     - name: Run eur_fiyati.py
       run: python eur_fiyati.py
 
-    - name: Run eur_usd_paritesi.py
-      run: python eur_usd_paritesi.py
+    - name: Run eur_usd_paritesii.py
+      run: python eur_usd_paritesii.py
 
     - name: Run gold_price.py
       run: python gold_price.py
