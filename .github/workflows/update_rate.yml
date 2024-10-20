@@ -30,9 +30,6 @@ jobs:
     - name: Run eur_usd_paritesi.py
       run: python eur_usd_paritesi.py
 
-    - name: Run dov_fiyati.py
-      run: python dov_fiyati.py
-
     - name: Run gold_price.py
       run: python gold_price.py
 
@@ -44,6 +41,9 @@ jobs:
 
     - name: Run ons_altin_fiyati.py
       run: python ons_altin_fiyati.py
+
+    - name: Run cumhuriyet_altin_price.py
+      run: python cumhuriyet_altin_price.py
 
     - name: Commit and push changes if there are any
       env:
