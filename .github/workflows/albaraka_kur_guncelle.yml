@@ -1,0 +1,35 @@
+name: Albaraka Kur Güncelle
+
+on:
+  schedule:
+    - cron: "5 6 * * 1-5"
+    - cron: "0 10 * * 1-5"
+    - cron: "55 14 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-rates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repo dosyalarını al
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verileri çek
+        run: python veri_cek.py
+
+      - name: Değişiklikleri kaydet
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add albaraka_kurlar.csv albaraka_kurlar.json
+          git commit -m "Albaraka kurları güncellendi" || echo "Değişiklik yok"
+          git push
