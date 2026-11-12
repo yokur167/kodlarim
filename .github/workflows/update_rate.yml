@@ -45,6 +45,9 @@ jobs:
     - name: Run cumhuriyet_altin_price.py
       run: python cumhuriyet_altin_price.py
 
+    - name: Calculate Widgy daily price changes
+      run: python update_daily_changes.py
+
     - name: Commit and push changes if there are any
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
