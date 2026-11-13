@@ -1,14 +1,14 @@
 {
   "session_date": "2026-11-13",
   "last_prices": {
-    "USD": "50.37",
-    "EUR": "55.71",
+    "USD": "50.36",
+    "EUR": "55.56",
     "EUR_USD": "1.11",
-    "Gold": "6306.67",
-    "Bracelet": "5755.00",
-    "Quarter Gold": "10294.00",
-    "Ons Gold": "3889.62",
-    "Republic Gold": "41104.00"
+    "Gold": "6275.01",
+    "Bracelet": "5739.00",
+    "Quarter Gold": "10259.00",
+    "Ons Gold": "3874.62",
+    "Republic Gold": "40975.00"
   },
   "reference_prices": {
     "USD": "50.25",
